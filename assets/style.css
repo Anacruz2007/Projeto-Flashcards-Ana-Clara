@@ -1,0 +1,164 @@
+/* assets/style.css */
+:root {
+    --text-color: #1a3c2c;
+    --card-front-color: #c9f0dd;
+    --card-back-color: #7bd389;
+    --footer-bg: #1a3c2c;
+    --footer-text: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Bai Jamjuree', sans-serif;
+    background: url('img/butterfly-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    padding-bottom: 2rem;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2rem;
+    gap: 1.5rem;
+}
+
+.cartao {
+    margin: 1rem;
+    height: 20rem;
+    flex-grow: 1;
+    flex-basis: calc(33% - 6rem);
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.cartao__conteudo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cartao.active .cartao__conteudo {
+    transform: rotateY(180deg);
+}
+
+.cartao__conteudo__frente,
+.cartao__conteudo__verso {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartao__conteudo__frente {
+    background-color: var(--card-front-color);
+    color: var(--text-color);
+}
+
+.cartao__conteudo__verso {
+    background-color: var(--card-back-color);
+    color: var(--text-color);
+    transform: rotateY(180deg);
+}
+
+.cartao__conteudo h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #2c5e3a;
+    border-bottom: 2px solid #4caf50;
+    padding-bottom: 0.5rem;
+    width: 100%;
+}
+
+.cartao__conteudo p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0.5rem 0;
+}
+
+.cartao__conteudo__verso p {
+    font-weight: 500;
+}
+
+footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p {
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .cartao {
+        flex-basis: calc(50% - 4rem);
+    }
+}
+
+@media (max-width: 768px) {
+    #container {
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .cartao {
+        flex-basis: 100%;
+        height: 18rem;
+        margin: 0.5rem;
+    }
+    
+    .cartao__conteudo h3 {
+        font-size: 1.2rem;
+    }
+    
+    .cartao__conteudo p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 560px) {
+    body {
+        background: url('img/butterfly-bg-mobile.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+    
+    .cartao {
+        height: 16rem;
+    }
+    
+    .cartao__conteudo h3 {
+        font-size: 1.1rem;
+    }
+    
+    .cartao__conteudo p {
+        font-size: 0.9rem;
+    }
+}
